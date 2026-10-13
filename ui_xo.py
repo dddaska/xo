@@ -16,7 +16,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QGridLayout, QLabel, QMainWindow,
-    QPushButton, QSizePolicy, QWidget)
+    QPushButton, QSizePolicy, QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -28,14 +28,31 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.widget = QWidget(self.centralwidget)
         self.widget.setObjectName(u"widget")
-        self.widget.setGeometry(QRect(60, 110, 411, 411))
-        self.widget.setStyleSheet(u"QWidget{\n"
+        self.widget.setGeometry(QRect(30, 10, 451, 551))
+        self.verticalLayout = QVBoxLayout(self.widget)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.label = QLabel(self.widget)
+        self.label.setObjectName(u"label")
+        self.label.setMaximumSize(QSize(16777215, 130))
+        self.label.setStyleSheet(u"color: #C13D3D;\n"
+"font-family: \"Comic Sans MS\", \"Caveat\", \"Segoe Print\", cursive;\n"
+"font-size:36px;\n"
+"font-weight: bold;\n"
+"padding:20px;")
+
+        self.verticalLayout.addWidget(self.label)
+
+        self.widget1 = QWidget(self.widget)
+        self.widget1.setObjectName(u"widget1")
+        self.widget1.setStyleSheet(u"QWidget{\n"
 "	background-color: transparent;\n"
 "}\n"
 "\n"
 "QPushButton {\n"
 "	background-color: transparent ;\n"
-"	border: none;\n"
+"	border: 2px solid #C13D3D;\n"
+"    border-radius: 0;\n"
 "	color: #C13D3D;\n"
 "	font-family: \"Comic Sans MS\", \"Segoe Print\", cursive;\n"
 "	font-size: 36px;\n"
@@ -52,9 +69,9 @@ class Ui_MainWindow(object):
 "	border-radius: 15px;\n"
 "}\n"
 "")
-        self.gridLayoutWidget = QWidget(self.widget)
+        self.gridLayoutWidget = QWidget(self.widget1)
         self.gridLayoutWidget.setObjectName(u"gridLayoutWidget")
-        self.gridLayoutWidget.setGeometry(QRect(0, 0, 451, 421))
+        self.gridLayoutWidget.setGeometry(QRect(10, 0, 431, 381))
         self.gridLayout = QGridLayout(self.gridLayoutWidget)
         self.gridLayout.setSpacing(0)
         self.gridLayout.setObjectName(u"gridLayout")
@@ -122,18 +139,18 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.btn5, 1, 1, 1, 1)
 
-        self.label = QLabel(self.centralwidget)
-        self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(80, 10, 381, 81))
-        self.label.setStyleSheet(u"color: #C13D3D;\n"
-"font-family: \"Comic Sans MS\", \"Caveat\", \"Segoe Print\", cursive;\n"
-"font-size:36px;\n"
-"font-weight: bold;\n"
-"padding:20px;")
-        self.resetBtn = QPushButton(self.centralwidget)
+
+        self.verticalLayout.addWidget(self.widget1)
+
+        self.resetBtn = QPushButton(self.widget)
         self.resetBtn.setObjectName(u"resetBtn")
-        self.resetBtn.setGeometry(QRect(370, 540, 101, 24))
+
+        self.verticalLayout.addWidget(self.resetBtn)
+
         MainWindow.setCentralWidget(self.centralwidget)
+        self.resetBtn.raise_()
+        self.label.raise_()
+        self.widget1.raise_()
 
         self.retranslateUi(MainWindow)
 
@@ -142,6 +159,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"\u041a\u0440\u0435\u0441\u0442\u0438\u043a\u0438-\u041d\u043e\u043b\u0438\u043a\u0438", None))
         self.btn9.setText("")
         self.btn8.setText("")
         self.btn1.setText("")
@@ -151,7 +169,6 @@ class Ui_MainWindow(object):
         self.btn3.setText("")
         self.btn6.setText("")
         self.btn5.setText("")
-        self.label.setText(QCoreApplication.translate("MainWindow", u"\u041a\u0440\u0435\u0441\u0442\u0438\u043a\u0438-\u041d\u043e\u043b\u0438\u043a\u0438", None))
         self.resetBtn.setText(QCoreApplication.translate("MainWindow", u"\u041d\u0430\u0447\u0430\u0442\u044c \u0441\u043d\u0430\u0447\u0430\u043b\u0430", None))
     # retranslateUi
 
